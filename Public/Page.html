@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Titre de la page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+</head>
+<body>
+    <header>
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="img/img.png" alt="...">
+                    <div class="carousel-caption">
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="img/img.png" alt="...">
+                    <div class="carousel-caption">
+                    </div>
+                </div>
+            </div>
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </header>
+        <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <a class="navbar-brand" href="#">Bienvenue</a>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Mes notes <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Algorithmique</a></li>
+                            <li><a href="#">Analyse Numérique</a></li>
+                            <li><a href="#">JAVA</a></li>
+                            <li><a href="#">PHP</a></li>
+                            <li><a href="#">Projet</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <a class="navbar-brand" href="#">Nom</a>
+                    <a class="navbar-brand" href="#">Prenom</a>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Options <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Plus d'options</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Déconnexion</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <section>
+        <div class="col-sm-14 col-md-12">
+            <div class="row">
+        <article id="article1">
+            <div class="col-xs-6 col-sm-4">
+                <div class="thumbnail">
+                    <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+                    <div class="caption">
+                        <h3>Modules</h3>
+                        <ul class="list-group">
+                        <li class="list-group-item list-group-item-info"><a href="#" >Algorithmique</a></li>
+                        <li class="list-group-item"><a href="#" >Anglais</a></li>
+                        <li class="list-group-item list-group-item-info"><a href="#" >Analyse Numérique</a></li>
+                        <li class="list-group-item"><a href="#" >PHP</a></li>
+                        <li class="list-group-item list-group-item-info"><a href="#" >Java</a></li>
+                            <li class="list-group-item"><a href="#" >HTML/CSS</a></li>
+                            <li class="list-group-item list-group-item-info"><a href="#" >Projet</a></li>
+                    </ul>
+                    </div>
+                </div>
+            </div>
+        </article>
+                <article id="article2">
+                    <div class="col-xs-6 col-sm-4">
+                        <div class="thumbnail">
+                            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                            <div class="caption">
+                                <h3>Mes interros</h3>
+                                <table class="table table-condensed">
+                                    <tr>
+                                        <td class="info">Type</td>
+                                        <td>Note</td>
+                                        <td class="info">Coefficient</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="info">Interro Java</td>
+                                        <td>14/20</td>
+                                        <td class="info">4</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="info">Interro HTML</td>
+                                        <td>16/20</td>
+                                        <td class="info">2</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="info">Interro PHP</td>
+                                        <td>20/20</td>
+                                        <td class="info">4</td>
+                                    </tr>
+                                </table>
+                                <ul class="list-group">
+                                    <li class="list-group-item list-group-item-info">Moyenne :</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article id="article3">
+                    <div class="col-xs-6 col-sm-4">
+                        <div class="thumbnail">
+                            <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
+                            <div class="caption">
+                                <h3>Détail de l'interro</h3>
+                                <ul class="list-group">
+                                    <li class="list-group-item list-group-item-info"><a href="#" >Interro Java</a></li>
+                                    <li class="list-group-item"><a href="#" >Le: 10/12/2015</a></li>
+                                    <li class="list-group-item list-group-item-info"><a href="#" >14/20</a></li>
+                                    <li class="list-group-item"><a href="#" >Commentaires: </a>
+                                        <p>
+                                        Bien !!
+                                    </p>
+
+                                    </li>
+                                </ul>
+                                <ul class="list-group">
+                                    <li class="list-group-item list-group-item-info"><a href="#" >Interro PHP</a></li>
+                                    <li class="list-group-item"><a href="#" >Le: 20/02/2016</a></li>
+                                    <li class="list-group-item list-group-item-info"><a href="#" >20/20</a></li>
+                                    <li class="list-group-item"><a href="#" >Commentaires: </a>
+                                        <p>
+                                            Très Bien !!
+                                        </p>
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+
+                        <i href="#">Copyright - Tous droits réservés</i><br>
+                        <a href="#">Nous contacter !</a></p>
+
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../bootstrap/js/npm.js"></script>
+
+
+</body>
+</html>
