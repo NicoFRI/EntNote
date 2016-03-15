@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Titre de la page</title>
+    <title>ENT</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
@@ -10,6 +10,8 @@
 
 </head>
 <body>
+
+    <!--Header-->
     <header>
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
@@ -32,6 +34,7 @@
                     </div>
                 </div>
             </div>
+
             <!-- Controls -->
             <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -43,6 +46,9 @@
             </a>
         </div>
     </header>
+
+
+    <!--Navbar-->
         <nav class="navbar navbar-inverse">
         <div class="container-fluid">
 
@@ -55,10 +61,9 @@
                 </button>
             </div>
 
-
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <a class="navbar-brand" href="#">Bienvenue</a>
+                    <li><a class="navbar-brand" href="#">Bienvenue</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Mes notes <span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -72,10 +77,8 @@
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <a class="navbar-brand" href="#">Nom</a>
-                    <a class="navbar-brand" href="#">Prenom</a>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Options <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Nom Prenom <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Plus d'options</a></li>
                             <li role="separator" class="divider"></li>
@@ -87,29 +90,33 @@
         </div>
     </nav>
 
-
+    <!--section-->
     <section>
         <div class="col-sm-14 col-md-12">
             <div class="row">
-        <article id="article1">
-            <div class="col-xs-6 col-sm-4">
-                <div class="thumbnail">
-                    <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
-                    <div class="caption">
-                        <h3>Modules</h3>
-                        <ul class="list-group">
-                        <li class="list-group-item list-group-item-info"><a href="#" >Algorithmique</a></li>
-                        <li class="list-group-item"><a href="#" >Anglais</a></li>
-                        <li class="list-group-item list-group-item-info"><a href="#" >Analyse Numérique</a></li>
-                        <li class="list-group-item"><a href="#" >PHP</a></li>
-                        <li class="list-group-item list-group-item-info"><a href="#" >Java</a></li>
-                            <li class="list-group-item"><a href="#" >HTML/CSS</a></li>
-                            <li class="list-group-item list-group-item-info"><a href="#" >Projet</a></li>
-                    </ul>
+
+                <!--zone article 1-->
+                <article id="article1">
+                    <div class="col-xs-6 col-sm-4">
+                        <div class="thumbnail">
+                            <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+                            <div class="caption">
+                                <h3>Modules</h3>
+                                <ul class="list-group">
+                                <li class="list-group-item list-group-item-info"><a href="#" >Algorithmique</a></li>
+                                <li class="list-group-item"><a href="#" >Anglais</a></li>
+                                <li class="list-group-item list-group-item-info"><a href="#" >Analyse Numérique</a></li>
+                                <li class="list-group-item"><a href="#" >PHP</a></li>
+                                <li class="list-group-item list-group-item-info"><a href="#" >Java</a></li>
+                                    <li class="list-group-item"><a href="#" >HTML/CSS</a></li>
+                                    <li class="list-group-item list-group-item-info"><a href="#" >Projet</a></li>
+                            </ul>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </article>
+                </article>
+
+                <!--zone article 2-->
                 <article id="article2">
                     <div class="col-xs-6 col-sm-4">
                         <div class="thumbnail">
@@ -145,6 +152,8 @@
                         </div>
                     </div>
                 </article>
+
+                <!--zone article 3-->
                 <article id="article3">
                     <div class="col-xs-6 col-sm-4">
                         <div class="thumbnail">
@@ -156,7 +165,7 @@
                                     <li class="list-group-item"><a href="#" >Le: 10/12/2015</a></li>
                                     <li class="list-group-item list-group-item-info"><a href="#" >14/20</a></li>
                                     <li class="list-group-item"><a href="#" >Commentaires: </a>
-                                        <p>
+                                    <p>
                                         Bien !!
                                     </p>
 
@@ -177,16 +186,13 @@
                         </div>
                     </div>
                 </article>
-
             </div>
         </div>
     </section>
 
     <footer>
-
-                        <i href="#">Copyright - Tous droits réservés</i><br>
-                        <a href="#">Nous contacter !</a></p>
-
+        <i>Copyright - Tous droits réservés</i><br>
+        <a href="#">Nous contacter !</a>
     </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
