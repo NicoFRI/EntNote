@@ -8,26 +8,22 @@
 		$_SESSION["Connexion"]['ErreurIdentifiant']=1; 
 
 	} else {
-		//connexion à la bdd
-		include("BDD.php");
-		$bdd = BDD::connect();
+		//création d'un nouvel utilisateur
+		include("Utilisateur.php");
+		$Utilisateur = new Utilisateur($_SESSION["Connexion"]["Identifiant"]);
 
-		//verifie que l'identifiant existe
-		$Rep = $bdd->query('SELECT * FROM `utilistateur` WHERE Identifiant="'.$_SESSION["Connexion"]["Identifiant"].'"');
-		$donnees = $Rep->fetch();
-
-		//si l'identifiant existe
-		if($donnees['Identifiant']=='') { 
+		//si l'utilisateur n'est pas connecté
+		if(!$Utilisateur->estConnecte()) {
 	     $_SESSION["Connexion"]['ErreurIdentifiant']=1;    	
 		} 
 
-		//si password saisi
+		//si password non saisi
 		if(empty($_SESSION["Connexion"]["Password"])) {
 			$_SESSION["Connexion"]['ErreurPassword']=1;
 
-		//si c'est le bon password
+		/*//si c'est le bon password
 		} elseif($donnees["Mdp"]!=$_SESSION["Connexion"]["Password"]){
-			$_SESSION["Connexion"]['ErreurPassword']=1;
+			$_SESSION["Connexion"]['ErreurPassword']=1;*/
 		}
 	}
 
@@ -39,6 +35,7 @@ if(isset($_SESSION["Connexion"]['ErreurPassword']) || isset($_SESSION["Connexion
 
 //si aucune erreur, sauvergarde des variables et envoie sur la page du site
 } else {
+	/*
 	$_SESSION["Nom"]=$donnees["Nom"];
 	$_SESSION["Prenom"]=$donnees["Prenom"];
 	$_SESSION["Connecter"]=true;
@@ -46,7 +43,8 @@ if(isset($_SESSION["Connexion"]['ErreurPassword']) || isset($_SESSION["Connexion
 	//regarde si le checkbox remember est coché
 	if(isset($_POST["remember"])) {
 	$_SESSION["Connecter"]["remember"]=true;
-	}
+	}*/
+
 	//detruit les variables
 	unset($_SESSION["Connexion"]['ErreurIdentifiant']);
 	unset($_SESSION["Connexion"]['ErreurPassword']);
