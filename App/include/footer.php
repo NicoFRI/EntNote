@@ -1,6 +1,6 @@
 <footer>
 
-                        <i href="#">Copyright - Tous droits réservés</i><br>
+                        <i href="#">Copyright - Tous droits rÃ©servÃ©s</i><br>
                         <a href="#">Nous contacter !</a></p>
 
     </footer>

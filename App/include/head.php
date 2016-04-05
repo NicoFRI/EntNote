@@ -1,4 +1,5 @@
 <?php
+session_name("ent");
 session_start();
 
 ?>

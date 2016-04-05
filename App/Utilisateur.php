@@ -1,5 +1,5 @@
 <?php
-
+include_once("BDD.php");
 class Utilisateur{
 	
 	Private $_Nom;

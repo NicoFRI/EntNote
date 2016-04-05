@@ -48,10 +48,11 @@ if(isset($_SESSION["Connexion"]['ErreurPassword']) || isset($_SESSION["Connexion
 	//detruit les variables
 	unset($_SESSION["Connexion"]['ErreurIdentifiant']);
 	unset($_SESSION["Connexion"]['ErreurPassword']);
-	unset($_SESSION["Connexion"]['Identifiant']);
+	//unset($_SESSION["Connexion"]['Identifiant']);
 	unset($_SESSION["Connexion"]['Password']);
 
 	//envoie sur la page du site
-	header('location:../Public/Page.html');
+	//header('location:../Public/Page.html');
+	header('location:../Public/page.php');
 }
 ?>

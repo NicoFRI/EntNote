@@ -1,11 +1,10 @@
 <?php
-session_start();
-if ( $_SESSION["Connecter"]== true ) {
-    $_SESSION[Nom];
-    $_SESSION[Prenom];
-}elseif{
+if (empty($_SESSION["Connexion"]["Identifiant"])){
+   header('location: ./Connexion.php');
+}else {
+    $util = new Utilisateur($_SESSION["Connexion"]['Identifiant']);
+  }
 
-}
 ?>
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
@@ -27,7 +26,7 @@ if ( $_SESSION["Connecter"]== true ) {
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Mes notes <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Algorithmique</a></li>
-                        <li><a href="#">Analyse Numérique</a></li>
+                        <li><a href="#">Analyse NumÃ©rique</a></li>
                         <li><a href="#">JAVA</a></li>
                         <li><a href="#">PHP</a></li>
                         <li><a href="#">Projet</a></li>
@@ -36,14 +35,14 @@ if ( $_SESSION["Connecter"]== true ) {
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <a class="navbar-brand" href="#">Nom</a>
-                <a class="navbar-brand" href="#">Prenom</a>
+                <a class="navbar-brand" href="#"><?php echo $util->getNom(); ?></a>
+                <a class="navbar-brand" href="#"><?php echo $util->getPrenom(); ?></a>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Options <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Plus d'options</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">Déconnexion</a></li>
+                        <li><a href="./../Public/Deconnexion.php">DÃ©connexion</a></li>
                     </ul>
                 </li>
             </ul>
