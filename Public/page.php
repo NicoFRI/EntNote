@@ -4,6 +4,7 @@ include('/../App/Utilisateur.php');
 include('/../App/include/head.php');
 include('/../App/include/header.php');
 include('/../App/include/nav.php');
+include('/../App/include/bloc.php');
 /*  COEUR DE LA PAGE  */
 
 
