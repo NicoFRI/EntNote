@@ -23,13 +23,10 @@ if (empty($_SESSION["Connexion"]["Identifiant"])){
             <ul class="nav navbar-nav">
                 <a class="navbar-brand" href="#">Bienvenue</a>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Mes notes <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Que voulez-vous ? <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Algorithmique</a></li>
-                        <li><a href="#">Analyse Numérique</a></li>
-                        <li><a href="#">JAVA</a></li>
-                        <li><a href="#">PHP</a></li>
-                        <li><a href="#">Projet</a></li>
+                        <li><a href="">Mes notes</a></li>
+                        <li><a id="Nav_Module" href="#">Mes modules</a></li>
                     </ul>
                 </li>
             </ul>
