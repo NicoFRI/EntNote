@@ -9,6 +9,6 @@
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <script src="../bootstrap/js/npm.js"></script>
 
-     <script src="/../App/js/script.js"></script>
+     <script src="../App/js/script.js"></script>
 </body>
 </html>

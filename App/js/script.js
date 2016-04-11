@@ -1,7 +1,7 @@
 (function($) {
 
   $('#Nav_Module').click(function(e){
-    
+    alert("a");
     e.preventDefault();
 
     /*$('.div_article1').prepend('<h3>Module</h3> <ul class="list-group">');
