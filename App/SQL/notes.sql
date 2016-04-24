@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Dim 24 Avril 2016 à 16:34
+-- Généré le :  Dim 24 Avril 2016 à 18:35
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -36,6 +36,11 @@ CREATE TABLE `appartient` (
   KEY `FK_Appartient_ID` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Vider la table avant d'insérer `appartient`
+--
+
+TRUNCATE TABLE `appartient`;
 --
 -- Contenu de la table `appartient`
 --
@@ -160,6 +165,11 @@ CREATE TABLE `devoirs` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 --
+-- Vider la table avant d'insérer `devoirs`
+--
+
+TRUNCATE TABLE `devoirs`;
+--
 -- Contenu de la table `devoirs`
 --
 
@@ -245,6 +255,11 @@ CREATE TABLE `document` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 --
+-- Vider la table avant d'insérer `document`
+--
+
+TRUNCATE TABLE `document`;
+--
 -- Contenu de la table `document`
 --
 
@@ -265,6 +280,11 @@ CREATE TABLE `enseigne` (
   KEY `FK_Enseigne_ID_module` (`ID_module`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Vider la table avant d'insérer `enseigne`
+--
+
+TRUNCATE TABLE `enseigne`;
 --
 -- Contenu de la table `enseigne`
 --
@@ -306,6 +326,11 @@ CREATE TABLE `modules` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 --
+-- Vider la table avant d'insérer `modules`
+--
+
+TRUNCATE TABLE `modules`;
+--
 -- Contenu de la table `modules`
 --
 
@@ -338,8 +363,26 @@ INSERT INTO `modules` (`ID_module`, `Nom_module`, `Coef_module`) VALUES
 --
 DROP VIEW IF EXISTS `modules_utilisateur`;
 CREATE TABLE `modules_utilisateur` (
-`Identifiant` tinytext
+`ID_Promo` int(11)
+,`Nom_Promo` tinytext
+,`ID_module` int(11)
 ,`Nom_module` tinytext
+,`Coef_module` int(11)
+,`ID` int(11)
+,`Identifiant` tinytext
+);
+-- --------------------------------------------------------
+
+--
+-- Doublure de structure pour la vue `module_par_promo`
+--
+DROP VIEW IF EXISTS `module_par_promo`;
+CREATE TABLE `module_par_promo` (
+`Nom_Promo` tinytext
+,`Nom_module` tinytext
+,`Coef_module` int(11)
+,`ID_Promo` int(11)
+,`ID_module` int(11)
 );
 -- --------------------------------------------------------
 
@@ -361,6 +404,11 @@ CREATE TABLE `notes` (
   KEY `FK_Notes_Id_devoir` (`Id_devoir`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Vider la table avant d'insérer `notes`
+--
+
+TRUNCATE TABLE `notes`;
 --
 -- Contenu de la table `notes`
 --
@@ -645,7 +693,8 @@ INSERT INTO `notes` (`Valeur`, `Commentaire`, `Coef`, `Note_max`, `ID`, `ID_modu
 --
 DROP VIEW IF EXISTS `notesusermoduledevoir`;
 CREATE TABLE `notesusermoduledevoir` (
-`Nom_module` tinytext
+`ID_module` int(11)
+,`Nom_module` tinytext
 ,`Nom_devoir` tinytext
 ,`Identifiant` tinytext
 ,`Valeur` int(11)
@@ -666,6 +715,11 @@ CREATE TABLE `promotion` (
   PRIMARY KEY (`ID_Promo`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
+--
+-- Vider la table avant d'insérer `promotion`
+--
+
+TRUNCATE TABLE `promotion`;
 --
 -- Contenu de la table `promotion`
 --
@@ -691,6 +745,11 @@ CREATE TABLE `suit` (
   KEY `FK_Suit_ID_module` (`ID_module`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Vider la table avant d'insérer `suit`
+--
+
+TRUNCATE TABLE `suit`;
 --
 -- Contenu de la table `suit`
 --
@@ -753,6 +812,11 @@ CREATE TABLE `typedocument` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 --
+-- Vider la table avant d'insérer `typedocument`
+--
+
+TRUNCATE TABLE `typedocument`;
+--
 -- Contenu de la table `typedocument`
 --
 
@@ -773,6 +837,11 @@ CREATE TABLE `type_utilisateur` (
   PRIMARY KEY (`ID_Type`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
+--
+-- Vider la table avant d'insérer `type_utilisateur`
+--
+
+TRUNCATE TABLE `type_utilisateur`;
 --
 -- Contenu de la table `type_utilisateur`
 --
@@ -801,6 +870,11 @@ CREATE TABLE `utilistateur` (
   KEY `FK_Utilistateur_ID_Type` (`ID_Type`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
+--
+-- Vider la table avant d'insérer `utilistateur`
+--
+
+TRUNCATE TABLE `utilistateur`;
 --
 -- Contenu de la table `utilistateur`
 --
@@ -918,7 +992,16 @@ INSERT INTO `utilistateur` (`ID`, `Nom`, `Prenom`, `Identifiant`, `Email`, `Mdp`
 --
 DROP TABLE IF EXISTS `modules_utilisateur`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `modules_utilisateur` AS select `utilistateur`.`Identifiant` AS `Identifiant`,`modules`.`Nom_module` AS `Nom_module` from ((((`utilistateur` join `promotion`) join `suit`) join `appartient`) join `modules`) where ((`suit`.`ID_Promo` = `appartient`.`ID_Promo`) and (`appartient`.`ID` = `utilistateur`.`ID`) and (`suit`.`ID_module` = `modules`.`ID_module`)) group by `modules`.`Nom_module` order by `utilistateur`.`Identifiant`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `modules_utilisateur` AS select `suit`.`ID_Promo` AS `ID_Promo`,`promotion`.`Nom_Promo` AS `Nom_Promo`,`suit`.`ID_module` AS `ID_module`,`modules`.`Nom_module` AS `Nom_module`,`modules`.`Coef_module` AS `Coef_module`,`appartient`.`ID` AS `ID`,`utilistateur`.`Identifiant` AS `Identifiant` from ((((`promotion` join `modules`) join `suit`) join `utilistateur`) join `appartient`) where ((`suit`.`ID_Promo` = `promotion`.`ID_Promo`) and (`suit`.`ID_module` = `modules`.`ID_module`) and (`appartient`.`ID_Promo` = `suit`.`ID_Promo`) and (`appartient`.`ID` = `utilistateur`.`ID`));
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la vue `module_par_promo`
+--
+DROP TABLE IF EXISTS `module_par_promo`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `module_par_promo` AS select `promotion`.`Nom_Promo` AS `Nom_Promo`,`modules`.`Nom_module` AS `Nom_module`,`modules`.`Coef_module` AS `Coef_module`,`suit`.`ID_Promo` AS `ID_Promo`,`suit`.`ID_module` AS `ID_module` from ((`promotion` join `modules`) join `suit`) where ((`suit`.`ID_Promo` = `promotion`.`ID_Promo`) and (`suit`.`ID_module` = `modules`.`ID_module`));
 
 -- --------------------------------------------------------
 
@@ -927,18 +1010,11 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `notesusermoduledevoir`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `notesusermoduledevoir` AS select `modules`.`Nom_module` AS `Nom_module`,`devoirs`.`Nom_devoir` AS `Nom_devoir`,`utilistateur`.`Identifiant` AS `Identifiant`,`Valeur` AS `Valeur`,`Note_max` AS `Note_max`,`Coef` AS `Coef` from (((`utilistateur` join `devoirs`) join `notes`) join `modules`) where ((`devoirs`.`Id_devoir` = `notes`.`Id_devoir`) and (`utilistateur`.`ID` = `notes`.`ID`) and (`modules`.`ID_module` = `notes`.`ID_module`));
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `notesusermoduledevoir` AS select `modules`.`ID_module` AS `ID_module`,`modules`.`Nom_module` AS `Nom_module`,`devoirs`.`Nom_devoir` AS `Nom_devoir`,`utilistateur`.`Identifiant` AS `Identifiant`,`Valeur` AS `Valeur`,`Note_max` AS `Note_max`,`Coef` AS `Coef` from (((`utilistateur` join `devoirs`) join `notes`) join `modules`) where ((`devoirs`.`Id_devoir` = `notes`.`Id_devoir`) and (`utilistateur`.`ID` = `notes`.`ID`) and (`modules`.`ID_module` = `notes`.`ID_module`));
 
 --
 -- Contraintes pour les tables exportées
 --
-
---
--- Contraintes pour la table `appartient`
---
-ALTER TABLE `appartient`
-  ADD CONSTRAINT `FK_Appartient_ID` FOREIGN KEY (`ID`) REFERENCES `utilistateur` (`ID`),
-  ADD CONSTRAINT `FK_Appartient_ID_Promo` FOREIGN KEY (`ID_Promo`) REFERENCES `promotion` (`ID_Promo`);
 
 --
 -- Contraintes pour la table `devoirs`
