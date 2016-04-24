@@ -8,11 +8,15 @@
 
 
 	//recupere les modules associés à l'utilisateur
-	$Rep = $bdd->getModuleUtilisateur($_SESSION["Connexion"]["Identifiant"]);
+	$Rep = $bdd->getUtilisateurNotesPour1module($_SESSION["Connexion"]["Identifiant"],$_POST['Module']);
 
-	echo '<ul class="Ul_Module_util">';
+	echo'Bonjour';
+
+
+
+	/*echo '<ul class="Ul_Module_util">';*/
 	while( $Module = $Rep->fetch()) {
-		 echo '<li><a  id="'.$Module['Nom_module'].'">'.$Module['Nom_module'].'</a></li><br />';
+		 /*echo '<li><a  id="'.$Module['Nom_module'].'">'.$Module['Nom_module'].'</a></li><br />';
 	
 		 //creer le script pour chaque Module pour pouvoir afficher les notes dans le second bloc
 		echo"<script>\n";
@@ -23,18 +27,18 @@
 		echo '$.post( "../App/bloc/Note_2.php",';
       	echo '{ Module: "'.$Module['Nom_module'].'" },';
   		echo" function(data) {";
-   		echo" $('.Ul_Module_util').append(data);";
+   		echo" $('.div_article2').append(data);";
      	echo "}";
    		echo" );";
 
 
 		echo "alert('ici')";
 		echo"});\n";
-		echo "})(jQuery); </script> ";
+		echo "})(jQuery); </script> ";*/
 }
 
 
-	echo '</ul>';
+	//echo '</ul>';
 ?>
 
 
