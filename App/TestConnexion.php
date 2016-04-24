@@ -10,7 +10,7 @@
 	} else {
 		//création d'un nouvel utilisateur
 		include("Utilisateur.php");
-		$Utilisateur = new Utilisateur($_SESSION["Connexion"]["Identifiant"]);
+		$Utilisateur = new Utilisateur($_SESSION["Connexion"]["Identifiant"],$_SESSION["Connexion"]["Password"]);
 
 		//si l'utilisateur n'est pas connecté
 		if(!$Utilisateur->estConnecte()) {

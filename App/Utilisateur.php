@@ -20,9 +20,14 @@ class Utilisateur{
 		$this->_Nom = $info["Nom"];
 		$this->_Prenom = $info["Prenom"];
 		$this->_Remember = true;
-		$this->_Logged = true;
+        $this->_Logged = false;
 		$this->_Type = $info["ID_Type"];
         $this->_identifiant = $info["ID"];
+		$this->_MDP = $info["Mdp"];
+
+        if ($MDP == $this->_MDP) {
+            $this->_Logged = true;
+        }
 	}
 	
 	public function estConnecte()
