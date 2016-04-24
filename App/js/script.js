@@ -1,17 +1,16 @@
 (function($) {
 
   $('#Nav_Module').click(function(e){
-    alert("a");
     e.preventDefault();
 
-    /*$('.div_article1').prepend('<h3>Module</h3> <ul class="list-group">');
+    $('.div_article1').prepend('<h3>Module</h3> <ul class="list-group">');
 
-           $.post( "/../App/bloc/Module.php",
-                  //{ name: "Zara" },
-                  function(data) {
-                     $('.div_article1').append(data);
-                  }
-               );*/
-    });
-    
+    $.post( "../App/bloc/Module.php",
+      //{ name: "Zara" },
+      function(data) {
+        $('.div_article1').append(data);
+      }
+    );
+  });
+     
 })(jQuery);
