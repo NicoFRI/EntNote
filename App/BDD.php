@@ -25,9 +25,9 @@ class myBase extends PDO
         return $Rep->fetch();
     }
 
-	public function getUtilisateurNotesPour1module($indentifiant,$nomModule)
+	public function getUtilisateurNotesPour1module($indentifiant,$IDModule)
 	{
-		$rep = $this->query('SELECT * FROM `notesusermoduledevoir` WHERE Identifiant="'.$indentifiant.'" AND Nom_module="'.$nomModule.'"');
+		$rep = $this->query('SELECT * FROM `notesusermoduledevoir` WHERE Identifiant="'.$indentifiant.'" AND ID_module="'.$IDModule.'"');
 	    return $rep;
     }
 

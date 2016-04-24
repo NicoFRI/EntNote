@@ -5,8 +5,23 @@ include("Utilisateur.php");
 
 $bdd = BDD::connect();
 
-$bdd->getInfoUtilisateur("Al195");
+$bdd->getInfoUtilisateur("JB321");
 var_dump($bdd);
 
-$Utilisateur = new Utilisateur();
+$Utilisateur = new Utilisateur("JB321");
 var_dump($Utilisateur);
+$cpt=0;
+$rep = $bdd->getModuleUtilisateur("JB321");
+while($tableau = $rep->fetch())
+{
+	echo "getModuleUtilisateur ".$cpt++;
+	var_dump($tableau);
+}
+
+$cpt=0;
+$rep = $bdd->getUtilisateurNotesPour1module("JB321",2);
+while($tableau = $rep->fetch())
+{
+	echo "getUtilisateurNotesPour1module ".$cpt++;
+	var_dump($tableau);
+}
