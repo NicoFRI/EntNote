@@ -927,7 +927,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `notesusermoduledevoir`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `notesusermoduledevoir` AS select `modules`.`Nom_module` AS `Nom_module`,`devoirs`.`Nom_devoir` AS `Nom_devoir`,`utilistateur`.`Identifiant` AS `Identifiant`,`Valeur` AS `Valeur`,`Note_max` AS `Note_max`,`Coef` AS `Coef` from (((`utilistateur` join `devoirs`) join `notes`) join `modules`) where ((`devoirs`.`Id_devoir` = `Id_devoir`) and (`utilistateur`.`ID` = `ID`) and (`modules`.`ID_module` = `ID_module`));
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `notesusermoduledevoir` AS select `modules`.`Nom_module` AS `Nom_module`,`devoirs`.`Nom_devoir` AS `Nom_devoir`,`utilistateur`.`Identifiant` AS `Identifiant`,`Valeur` AS `Valeur`,`Note_max` AS `Note_max`,`Coef` AS `Coef` from (((`utilistateur` join `devoirs`) join `notes`) join `modules`) where ((`devoirs`.`Id_devoir` = `notes`.`Id_devoir`) and (`utilistateur`.`ID` = `notes`.`ID`) and (`modules`.`ID_module` = `notes`.`ID_module`));
 
 --
 -- Contraintes pour les tables exportées
