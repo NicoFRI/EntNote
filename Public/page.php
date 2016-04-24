@@ -1,5 +1,6 @@
 <?php
 /*  HAUT DE LA PAGE */
+//include('/../App/BDD.php');
 include('/../App/Utilisateur.php');
 include('/../App/include/head.php');
 include('/../App/include/header.php');
