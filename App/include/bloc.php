@@ -29,8 +29,8 @@
                     <div class="col-xs-6 col-sm-4">
                         <div class="thumbnail">
                             <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-                            <div class="caption">
-                                <h3>Mes interros</h3>
+                            <div class="caption div_article2">
+                                <!--<h3>Mes interros</h3>
                                 <table class="table table-condensed">
                                     <tr>
                                         <td class="info">Type</td>
@@ -58,7 +58,7 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                 </article>
 
                 <!--zone article 3-->
@@ -66,7 +66,7 @@
                     <div class="col-xs-6 col-sm-4">
                         <div class="thumbnail">
                             <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
-                            <div class="caption">
+                            <div class="caption div_article3">
                                 <h3>Détail de l'interro</h3>
                                 <ul class="list-group">
                                     <li class="list-group-item list-group-item-info"><a href="#" >Interro Java</a></li>

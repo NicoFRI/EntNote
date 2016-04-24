@@ -2,9 +2,9 @@
 
   $('#Nav_Module').click(function(e){
     e.preventDefault();
-
-    $('.div_article1').prepend('<h3>Module</h3> <ul class="list-group">');
-
+    
+    //supprime contenu de .div_article1, pour eviter duplicata si fonction appeler plusieurs fois d'affilé
+    $('.div_article1').empty(); 
     $.post( "../App/bloc/Module.php",
       //{ name: "Zara" },
       function(data) {
@@ -12,5 +12,7 @@
       }
     );
   });
-     
+
+
+  
 })(jQuery);
