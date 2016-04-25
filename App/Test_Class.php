@@ -28,7 +28,7 @@ while($tableau = $rep->fetch())
 	var_dump($tableau);
 }
 
-$rep = $bdd->getDetailsNotes("131519");
+$rep = $bdd->getDetailsNotes("13_15_19");
 echo "getDetailsNotes ";
 var_dump($rep);
 
@@ -47,3 +47,16 @@ while($tableau = $rep->fetch())
     echo "getDevoirEnseignant ".$cpt++;
     var_dump($tableau);
 }
+
+$cpt=0;
+$rep = $bdd->getNotesDevoir(53);
+while($tableau = $rep->fetch())
+{
+    echo "getNotesDevoir ".$cpt++;
+    var_dump($tableau);
+}
+
+
+$rep = $bdd->getDetailsDevoir("SA171",53);
+echo "getDetailsDevoir ";
+var_dump($rep);

@@ -55,5 +55,24 @@ class myBase extends PDO
         $rep = $this->query('SELECT * FROM `devoir_prof` where `Identifiant`="'.$indentifiant.'"');
         return $rep;
     }
+
+    public function getNotesDevoir($IdDevoir)
+    {
+        $rep = $this->query('SELECT * FROM `notes_par_intero` where `Id_devoir`="'.$IdDevoir.'"');
+        return $rep;
+    }
+
+    public function getDevoirEtudiant($indentifiant)
+    {
+        $rep = $this->query('SELECT * FROM `notes_par_intero` where`Identifiant`="'.$indentifiant.'"');
+        return $rep;
+    }
+
+    public function getDetailsDevoir($indentifiant,$IdDevoir)
+    {
+        $rep = $this->query('SELECT * FROM `notes_par_intero` where`Identifiant`="'.$indentifiant.'" and `Id_devoir`="'.$IdDevoir.'"');
+        return $rep->fetch();
+    }
 }
+
 
