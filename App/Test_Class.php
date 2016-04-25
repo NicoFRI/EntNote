@@ -20,7 +20,7 @@ while($tableau = $rep->fetch())
 }
 
 $cpt=0;
-$rep = $bdd->getUtilisateurNotesPour1module("JB321",2);
+$rep = $bdd->getUtilisateurNotesPour1module("EV199",2);
 
 while($tableau = $rep->fetch())
 {
