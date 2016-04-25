@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 25 Avril 2016 à 16:28
+-- Généré le :  Lun 25 Avril 2016 à 16:52
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -17,10 +17,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données :  `notes`
+-- Base de données :  `entnotes`
 --
-CREATE DATABASE IF NOT EXISTS `notes` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `notes`;
+CREATE DATABASE IF NOT EXISTS `entnotes` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `entnotes`;
 
 -- --------------------------------------------------------
 
@@ -1011,7 +1011,7 @@ INSERT INTO `utilistateur` (`ID`, `Nom`, `Prenom`, `Identifiant`, `Email`, `Mdp`
 --
 DROP TABLE IF EXISTS `detailsnotes`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `detailsnotes` AS select concat(`ID_module`,`ID`,`Id_devoir`) AS `ID_notes`,`Commentaire` AS `Commentaire`,`Valeur` AS `Valeur`,`Coef` AS `Coef`,`Note_max` AS `Note_max`,`devoirs`.`Nom_devoir` AS `Nom_devoir`,`devoirs`.`Type_devoir` AS `Type_devoir`,`devoirs`.`Date_devoir` AS `Date_devoir` from (`notes` join `devoirs`) where (`Id_devoir` = `devoirs`.`Id_devoir`);
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `detailsnotes` AS select concat(`notes`.`ID_module`,`notes`.`ID`,`notes`.`Id_devoir`) AS `ID_notes`,`notes`.`Commentaire` AS `Commentaire`,`notes`.`Valeur` AS `Valeur`,`notes`.`Coef` AS `Coef`,`notes`.`Note_max` AS `Note_max`,`devoirs`.`Nom_devoir` AS `Nom_devoir`,`devoirs`.`Type_devoir` AS `Type_devoir`,`devoirs`.`Date_devoir` AS `Date_devoir` from (`notes` join `devoirs`) where (`notes`.`Id_devoir` = `devoirs`.`Id_devoir`);
 
 -- --------------------------------------------------------
 
@@ -1020,7 +1020,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `modules_utilisateur`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `modules_utilisateur` AS select `suit`.`ID_Promo` AS `ID_Promo`,`promotion`.`Nom_Promo` AS `Nom_Promo`,`suit`.`ID_module` AS `ID_module`,`modules`.`Nom_module` AS `Nom_module`,`modules`.`Coef_module` AS `Coef_module`,`appartient`.`ID` AS `ID`,`utilistateur`.`Identifiant` AS `Identifiant`,(((`Valeur` * `Coef`) / (`Note_max` * `Coef`)) * 20) AS `Moyenne` from (((((`promotion` join `modules`) join `suit`) join `utilistateur`) join `appartient`) left join `notes` on(((`modules`.`ID_module` = `ID_module`) and (`utilistateur`.`ID` = `ID`)))) where ((`suit`.`ID_Promo` = `promotion`.`ID_Promo`) and (`suit`.`ID_module` = `modules`.`ID_module`) and (`appartient`.`ID_Promo` = `suit`.`ID_Promo`) and (`appartient`.`ID` = `utilistateur`.`ID`)) order by `utilistateur`.`Identifiant`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `modules_utilisateur` AS select `suit`.`ID_Promo` AS `ID_Promo`,`promotion`.`Nom_Promo` AS `Nom_Promo`,`suit`.`ID_module` AS `ID_module`,`modules`.`Nom_module` AS `Nom_module`,`modules`.`Coef_module` AS `Coef_module`,`appartient`.`ID` AS `ID`,`utilistateur`.`Identifiant` AS `Identifiant`,(((`notes`.`Valeur` * `notes`.`Coef`) / (`notes`.`Note_max` * `notes`.`Coef`)) * 20) AS `Moyenne` from (((((`promotion` join `modules`) join `suit`) join `utilistateur`) join `appartient`) left join `notes` on(((`modules`.`ID_module` = `notes`.`ID_module`) and (`utilistateur`.`ID` = `notes`.`ID`)))) where ((`suit`.`ID_Promo` = `promotion`.`ID_Promo`) and (`suit`.`ID_module` = `modules`.`ID_module`) and (`appartient`.`ID_Promo` = `suit`.`ID_Promo`) and (`appartient`.`ID` = `utilistateur`.`ID`)) order by `utilistateur`.`Identifiant`;
 
 -- --------------------------------------------------------
 
@@ -1038,7 +1038,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `notesusermoduledevoir`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `notesusermoduledevoir` AS select `modules`.`ID_module` AS `ID_module`,concat(`modules`.`ID_module`,`utilistateur`.`ID`,`devoirs`.`Id_devoir`) AS `ID_notes`,`modules`.`Nom_module` AS `Nom_module`,`devoirs`.`Nom_devoir` AS `Nom_devoir`,`utilistateur`.`Identifiant` AS `Identifiant`,`Valeur` AS `Valeur`,`Note_max` AS `Note_max`,`Coef` AS `Coef` from (((`utilistateur` join `devoirs`) join `notes`) join `modules`) where ((`devoirs`.`Id_devoir` = `notes`.`Id_devoir`) and (`utilistateur`.`ID` = `notes`.`ID`) and (`modules`.`ID_module` = `notes`.`ID_module`));
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `notesusermoduledevoir` AS select `modules`.`ID_module` AS `ID_module`,concat(`modules`.`ID_module`,`utilistateur`.`ID`,`devoirs`.`Id_devoir`) AS `ID_notes`,`modules`.`Nom_module` AS `Nom_module`,`devoirs`.`Nom_devoir` AS `Nom_devoir`,`utilistateur`.`Identifiant` AS `Identifiant`,`notes`.`Valeur` AS `Valeur`,`notes`.`Note_max` AS `Note_max`,`notes`.`Coef` AS `Coef` from (((`utilistateur` join `devoirs`) join `notes`) join `modules`) where ((`devoirs`.`Id_devoir` = `notes`.`Id_devoir`) and (`utilistateur`.`ID` = `notes`.`ID`) and (`modules`.`ID_module` = `notes`.`ID_module`));
 
 --
 -- Contraintes pour les tables exportées
