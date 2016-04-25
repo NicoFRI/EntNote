@@ -6,9 +6,6 @@
 	include('/../BDD.php');
 	$bdd = BDD::connect();
 
-	//recupere le type de l'utilisateur
-	$typeUtil = $bdd->getInfoUtilisateur($_SESSION["Connexion"]["Identifiant"]);
-
 	//recupere les modules associés à l'utilisateur
 	$Rep = $bdd->getModuleUtilisateur($_SESSION["Connexion"]["Identifiant"]);
 
