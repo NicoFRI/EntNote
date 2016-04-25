@@ -24,7 +24,7 @@
 	    	echo '<td > <a  id="Module_'.$Module['ID_module'].'_0"> '.$Module['Nom_module'].' </a></td>';
 	    	/*if($typeUtil['ID_Type']==1)
 			{*/
-	    	echo '<td class="info"> <a id="Module_'.$Module['ID_module'].'_1"> '.(float)$Module['Moyene'].'/20</a></td>';
+	    	echo '<td class="info"> <a id="Module_'.$Module['ID_module'].'_1"> '.(float)$Module['Moyenne'].'/20</a></td>';
 	  		/*}*/
 	    echo '</tr>';
 
