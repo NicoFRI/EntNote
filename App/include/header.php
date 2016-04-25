@@ -16,11 +16,6 @@
                     <div class="carousel-caption">
                     </div>
                 </div>
-                <div class="item">
-                    <img src="img/img.png" alt="...">
-                    <div class="carousel-caption">
-                    </div>
-                </div>
             </div>
             <!-- Controls -->
             <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
