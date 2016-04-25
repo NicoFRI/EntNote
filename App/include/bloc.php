@@ -24,7 +24,7 @@
                                
                             </div>
                         </div>
-                    </div>-->
+                    </div>
                 </article>
 
                 <!--zone article 3-->
