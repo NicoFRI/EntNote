@@ -37,5 +37,12 @@ class myBase extends PDO
         $rep = $this->query('SELECT * FROM `modules_utilisateur` WHERE Identifiant="'.$indentifiant.'"');
         return $rep;
     }
+
+	public function getDetailsNotes($ID_notes)
+	{
+		$rep = $this->query('SELECT * FROM `detailsnotes` WHERE `ID_notes`="'.$ID_notes.'"');
+		return $rep->fetch();
+	}
+
 }
 
