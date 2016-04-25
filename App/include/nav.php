@@ -15,20 +15,23 @@
                     <ul class="nav navbar-nav">
                         <a class="navbar-brand" href="#">Bienvenue</a>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Que voulez-vous ? <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-<?php
-$t = $util->GetType();
-    if ($t == 1) {
-        ?>
-                                <li><a id="Nav_Module" href="#">Mes modules</a></li>
-                                <li><a id="Nav_Depots" href="#">Mes dépots</a></li>
+                            <a href="#" class="dropdown-toggle Nav_choix" id="ici" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Que voulez-vous ? 
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu ul_nav">
+                            <?php
+                            $t = $util->GetType();
+                            //si utilisateur est un etudiant
+                                if ($t == 1) {
+                                    ?>
+                                <li id="li_Nav_Module"><a id="Nav_Module" href="#" >Mes modules</a></li>
+                                <li id="li_Nav_Depots"><a id="Nav_Depots" href="#">Mes dépots</a></li>
 
-<?php
-    };
-$t = $util->GetType();
-    if ($t == 2) {
-        ?>
+                                <?php
+                                    };
+                                $t = $util->GetType();
+                                  //si utilisateur est un professeur
+                                    if ($t == 2) {
+                                        ?>
                                 <li><a id="Nav_Devoirs" href="#">Mes devoirs</a></li>
                                 <li><a id="Nav_Depots" href="#">Les dépots</a></li>
 <?php

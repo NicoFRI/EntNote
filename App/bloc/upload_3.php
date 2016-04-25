@@ -8,3 +8,5 @@
 
 	/*id du devoir => $_POST['IdDevoirs']
 	nom du devoir => $_POST['NomDevoirs']*/
+
+	echo "b";
