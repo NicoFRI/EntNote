@@ -1,6 +1,5 @@
 <!--section-->
 <?php
-include('/../App/BDD.php');
 $bdd=BDD::connect();
 ?>
     <section>

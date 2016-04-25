@@ -22,7 +22,6 @@ $t = $util->GetType();
     if ($t == 1) {
         ?>
                                 <li><a id="Nav_Module" href="#">Mes modules</a></li>
-                                <li><a id="Nav_Cours" href="#">Mes cours</a></li>
                                 <li><a id="Nav_Depots" href="#">Mes dépots</a></li>
 
 <?php
@@ -31,7 +30,6 @@ $t = $util->GetType();
     if ($t == 2) {
         ?>
                                 <li><a id="Nav_Devoirs" href="#">Mes devoirs</a></li>
-                                <li><a id="Nav_Cours" href="#">Mes cours</a></li>
                                 <li><a id="Nav_Depots" href="#">Les dépots</a></li>
 <?php
     };
