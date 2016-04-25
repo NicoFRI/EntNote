@@ -44,5 +44,16 @@ class myBase extends PDO
 		return $rep->fetch();
 	}
 
+    public function getModuleEnseignant($indentifiant)
+    {
+        $rep = $this->query('SELECT * FROM `modules_prof`  WHERE Identifiant="'.$indentifiant.'"');
+        return $rep;
+    }
+
+    public function getDevoirEnseignant($indentifiant)
+    {
+        $rep = $this->query('SELECT * FROM `devoir_prof` where `Identifiant`="'.$indentifiant.'"');
+        return $rep;
+    }
 }
 

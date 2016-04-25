@@ -31,3 +31,19 @@ while($tableau = $rep->fetch())
 $rep = $bdd->getDetailsNotes("131519");
 echo "getDetailsNotes ";
 var_dump($rep);
+
+$cpt=0;
+$rep = $bdd->getModuleEnseignant("AL195");
+while($tableau = $rep->fetch())
+{
+    echo "getModuleEnseignant ".$cpt++;
+    var_dump($tableau);
+}
+
+$cpt=0;
+$rep = $bdd->getDevoirEnseignant("AL195");
+while($tableau = $rep->fetch())
+{
+    echo "getDevoirEnseignant ".$cpt++;
+    var_dump($tableau);
+}
