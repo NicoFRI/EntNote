@@ -119,6 +119,28 @@ class myBase extends PDO
         $rep = $this->query($SQL);
 
     }
+
+    public function InsertDM($devoir)
+    {
+        /*$tabINSERT= array ( "Nom_module" => $_POST['NomModule'],
+                    "id_note" => $_POST['IDnotes'],
+                    "idDate_devoir" => $_POST['iddatedev'],
+                    "titre_doc" => $_SESSION["Connexion"]["Identifiant"],
+                    "ID_typedoc" => '3');*/
+
+        $idnote = explode("_",$devoir["id_note"]);
+        var_dump($idnote);
+        var_dump($devoir);
+        $rep = $this->query('INSERT INTO `entnotes`.`document` (`ID_doc`, `Titre_doc`, `Description_doc`, `Emplacement_fichier`, `ID_module`, `Id_TypeDoc`) VALUES (NULL, "Sujet de '.$devoir["titre_doc"].'", NULL , "'.$devoir["Chemin_doc"].'","'.$idnote[0].'",'.$devoir["ID_typedoc"].')');
+        $Doc_id = $this->lastInsertId();
+
+        var_dump($devoir);
+
+
+        $rep = $this->query('UPDATE `entnotes`.`notes` SET `ID_doc` = '.$Doc_id.' WHERE ( `notes`.`ID` = '.$idnote[1].' AND `notes`.`ID_module` = '.$idnote[0].' AND `notes`.`Id_devoir` = '.$idnote[2].')');
+    }
+
+
 }
 
 
