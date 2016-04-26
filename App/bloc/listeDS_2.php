@@ -17,10 +17,7 @@
 
     $next = new DateTime( $Rep['Date_devoir'] ); 
     $next = $next->format('Ymd'); 
-   
-
-
-
+    
 
     echo '<table class="table table-condensed Ul_Module_util">';
     echo '<tr>';
@@ -45,12 +42,9 @@
     if($Rep['type_devoir']=="DM" && $Rep['id_doc_note']==null &&  $now < $next  ) {
     echo '<tr>';
         echo '<td class="info" colspan="2"><a id="Rendre_'.$Rep['Id_devoir'].'">rendre le DM</a></td>';
-
     echo '</tr>';
 
 
-        //echo '<ul><li><a id="Rendre_'.$Rep['Id_devoir'].'">rendre le DM</a></li></ul>';
-      
         echo"<script>\n";
         echo"(function($) {\n";
        echo " $('#Rendre_".$Rep['Id_devoir']."').click(function(e){\n";
@@ -61,7 +55,7 @@
 
         //demande de l'affichage à upload_3 dans la div_article2
         echo '$.post( "../App/bloc/rendre_devoir_3.php",';
-        echo '{ IdDevoirs: "'.$Rep['Id_devoir'].'"},';
+        echo '{ IdDevoirs: "'.$Rep['Id_devoir'].'",    },';
         echo" function(data) {";
         echo" $('.div_article3').append(data);";
         echo "}";
@@ -69,3 +63,9 @@
         echo"});\n";
         echo "})(jQuery); </script> ";
     }
+
+    if($Rep['id_doc_devoir']!=null &&  $now < $next  ) {
+        echo '<tr>';
+        echo '<td class="info" colspan="2"><a id="Voir_'.$Rep['id_doc_devoir'].'"  href="../App/Download.php?Doc='/*chemin.*/.'">Télécharger le document</a></td>';
+    echo '</tr>';
+}
