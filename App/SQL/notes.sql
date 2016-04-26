@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 25 Avril 2016 à 23:33
+-- Généré le :  Mar 26 Avril 2016 à 10:04
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -165,6 +165,7 @@ CREATE TABLE `detailsnotes` (
 ,`Id_devoir` int(11)
 ,`ID` int(11)
 ,`Identifiant` tinytext
+,`Id_doc` int(11)
 );
 -- --------------------------------------------------------
 
@@ -245,7 +246,7 @@ INSERT INTO `devoirs` (`Id_devoir`, `Nom_devoir`, `Type_devoir`, `Date_devoir`, 
 (50, 'Byzus', 'DS', '0000-00-00', NULL),
 (51, 'Alastaror', 'QCM', '0000-00-00', NULL),
 (52, 'Apohial', 'Oral', '0000-00-00', NULL),
-(53, 'Bemelel', 'DS', '0000-00-00', NULL),
+(53, 'Bemelel', 'DM', '0000-00-00', NULL),
 (54, 'Nelus', 'QCM', '0000-00-00', NULL),
 (55, 'Andracifial', 'Oral', '0000-00-00', NULL),
 (56, 'Cagial', 'DS', '0000-00-00', NULL),
@@ -448,9 +449,11 @@ CREATE TABLE `notes` (
   `ID` int(11) NOT NULL,
   `ID_module` int(11) NOT NULL,
   `Id_devoir` int(11) NOT NULL,
+  `ID_doc` int(11) NULL,
   PRIMARY KEY (`ID`,`ID_module`,`Id_devoir`),
   KEY `FK_Notes_ID_module` (`ID_module`),
-  KEY `FK_Notes_Id_devoir` (`Id_devoir`)
+  KEY `FK_Notes_Id_devoir` (`Id_devoir`),
+  KEY `FK_Notes_ID_doc` (`ID_doc`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -1061,7 +1064,7 @@ INSERT INTO `utilistateur` (`ID`, `Nom`, `Prenom`, `Identifiant`, `Email`, `Mdp`
 --
 DROP TABLE IF EXISTS `detailsnotes`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `detailsnotes` AS select concat(`notes`.`ID_module`,'_',`notes`.`ID`,'_',`notes`.`Id_devoir`) AS `ID_notes`,`notes`.`Commentaire` AS `Commentaire`,`notes`.`Valeur` AS `Valeur`,`notes`.`Coef` AS `Coef`,`notes`.`Note_max` AS `Note_max`,`devoirs`.`Nom_devoir` AS `Nom_devoir`,`devoirs`.`Type_devoir` AS `Type_devoir`,`devoirs`.`Date_devoir` AS `Date_devoir`,`notes`.`Id_devoir` AS `Id_devoir`,`notes`.`ID` AS `ID`,`utilistateur`.`Identifiant` AS `Identifiant` from ((`notes` join `devoirs`) join `utilistateur`) where ((`notes`.`Id_devoir` = `devoirs`.`Id_devoir`) and (`notes`.`ID` = `utilistateur`.`ID`));
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `detailsnotes` AS select concat(`notes`.`ID_module`,'_',`notes`.`ID`,'_',`notes`.`Id_devoir`) AS `ID_notes`,`notes`.`Commentaire` AS `Commentaire`,`notes`.`Valeur` AS `Valeur`,`notes`.`Coef` AS `Coef`,`notes`.`Note_max` AS `Note_max`,`devoirs`.`Nom_devoir` AS `Nom_devoir`,`devoirs`.`Type_devoir` AS `Type_devoir`,`devoirs`.`Date_devoir` AS `Date_devoir`,`notes`.`Id_devoir` AS `Id_devoir`,`notes`.`ID` AS `ID`,`utilistateur`.`Identifiant` AS `Identifiant`,`devoirs`.`ID_doc` AS `Id_doc` from ((`notes` join `devoirs`) join `utilistateur`) where ((`notes`.`Id_devoir` = `devoirs`.`Id_devoir`) and (`notes`.`ID` = `utilistateur`.`ID`));
 
 -- --------------------------------------------------------
 
@@ -1147,7 +1150,9 @@ ALTER TABLE `enseigne`
 ALTER TABLE `notes`
   ADD CONSTRAINT `FK_Notes_ID` FOREIGN KEY (`ID`) REFERENCES `utilistateur` (`ID`),
   ADD CONSTRAINT `FK_Notes_Id_devoir` FOREIGN KEY (`Id_devoir`) REFERENCES `devoirs` (`Id_devoir`),
-  ADD CONSTRAINT `FK_Notes_ID_module` FOREIGN KEY (`ID_module`) REFERENCES `modules` (`ID_module`);
+  ADD CONSTRAINT `FK_Notes_ID_module` FOREIGN KEY (`ID_module`) REFERENCES `modules` (`ID_module`),
+  ADD CONSTRAINT `FK_Notes_ID_doc` FOREIGN KEY (`ID_doc`) REFERENCES `document` (`ID_module`);
+  
 
 --
 -- Contraintes pour la table `suit`
