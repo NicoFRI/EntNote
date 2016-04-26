@@ -9,6 +9,19 @@
     //recupere les devoir associés à l'utilisateur
     $Rep = $bdd->getDetailsDevoir($_SESSION["Connexion"]["Identifiant"], $_POST['IdDevoirs']);
 
+
+    //gestion date pour test
+    $date = date('Y-m-d'); 
+    $now = new DateTime( $date );
+    $now = $now->format('Ymd'); 
+
+    $next = new DateTime( $Rep['Date_devoir'] ); 
+    $next = $next->format('Ymd'); 
+   
+
+
+
+
     echo '<table class="table table-condensed Ul_Module_util">';
     echo '<tr>';
         echo '<td class="info">Module</td>';
@@ -26,3 +39,33 @@
         echo '<td class="info">Date</td>';
         echo '<td >'.$Rep['Date_devoir'].'</td>';
     echo '</tr>';
+
+
+    // si il y a un dm à rendre et qu'il est pas encore rendu et date pas encore passée
+    if($Rep['type_devoir']=="DM" && $Rep['id_doc_note']==null &&  $now < $next  ) {
+    echo '<tr>';
+        echo '<td class="info" colspan="2"><a id="Rendre_'.$Rep['Id_devoir'].'">rendre le DM</a></td>';
+
+    echo '</tr>';
+
+
+        //echo '<ul><li><a id="Rendre_'.$Rep['Id_devoir'].'">rendre le DM</a></li></ul>';
+      
+        echo"<script>\n";
+        echo"(function($) {\n";
+       echo " $('#Rendre_".$Rep['Id_devoir']."').click(function(e){\n";
+       echo"  e.preventDefault();\n";
+
+        //vide la div_article3
+        echo "$('.div_article3').empty(); ";
+
+        //demande de l'affichage à upload_3 dans la div_article2
+        echo '$.post( "../App/bloc/rendre_devoir_3.php",';
+        echo '{ IdDevoirs: "'.$Rep['Id_devoir'].'"},';
+        echo" function(data) {";
+        echo" $('.div_article3').append(data);";
+        echo "}";
+        echo" );";
+        echo"});\n";
+        echo "})(jQuery); </script> ";
+    }
