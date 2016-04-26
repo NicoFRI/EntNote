@@ -82,7 +82,7 @@ $bdd=BDD::connect();
 
                                         <div class="form-group">
                                             <label for="InputFile">Document en PDF</label>
-                                            <input type="file" name="InputFile" id="InputFile" required/>
+                                            <input type="file" name="InputFile" id="InputFile"/>
                                             <p class="help-block">Ajoutez un document si besoin</p>
                                         </div>
                                         <button type="submit" class="btn btn-success">Ajouter</button>
