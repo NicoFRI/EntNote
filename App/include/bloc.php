@@ -46,29 +46,14 @@ $bdd=BDD::connect();
                                 if ($t == 2) {
                                     ?>
                                     <h3>Ajouter une interro</h3>
-                                    <form>
+                                    <form method="post" action="../App/bloc/upload_3.php" enctype="multipart/form-data">
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <?php $rep = $bdd->getModuleUtilisateur($_SESSION["Connexion"]["Identifiant"]);
-                                                while($tableau = $rep->fetch())
-                                                {
 
-                                                    var_dump($tableau);
-                                                }
-                                                ?>
-                                                <span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="#">Action</a></li>
-                                                <li><a href="#">Another action</a></li>
-                                                <li><a href="#">Something else here</a></li>
-                                                <li role="separator" class="divider"></li>
-                                                <li><a href="#">Separated link</a></li>
                                             </ul>
                                         </div>
                                         <div class="form-group">
                                             <label for="InputNom">Nom</label>
-                                            <input type="nom" class="form-control" id="InputNom">
+                                            <input type="nom" class="form-control" name="InputNom" id="InputNom">
                                         </div>
                                         <div class="form-group">
                                             <label for="InputType">Type</label>
@@ -96,14 +81,11 @@ $bdd=BDD::connect();
 
                                         <div class="form-group">
                                             <label for="InputFile">Document</label>
-                                            <input type="file" id="InputFile">
+                                            <input type="file" name="InputFile" id="InputFile">
                                             <p class="help-block">Ajoutez un document si besoin</p>
                                         </div>
                                         <button type="submit" class="btn btn-success">Ajouter</button>
                                     </form>
-
-
-
 
                                     <?php
                                 };

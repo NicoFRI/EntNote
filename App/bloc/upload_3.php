@@ -9,4 +9,15 @@
 	/*id du devoir => $_POST['IdDevoirs']
 	nom du devoir => $_POST['NomDevoirs']*/
 
-	echo "b";
+/* Pour upload le DEVOIR*/
+echo $_FILES['InputFile']['tmp_name'];
+	/*id du devoir => $_POST['IdDevoirs']
+	nom du devoir => $_POST['NomDevoirs']*/
+
+if ( is_uploaded_file($_FILES['InputFile']['tmp_name']) ) {
+	$uid = $_POST['InputNom'];
+	if (move_uploaded_file($_FILES['InputFile']['tmp_name'],
+		'D:/wamp/www/nait/EntNote/document/prof/' . $uid .'.pdf' )) {
+		header('location: D:/wamp/www/nait/EntNote/Public/page.php');
+	};
+}
