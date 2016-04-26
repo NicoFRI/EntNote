@@ -32,8 +32,8 @@
                                 //si utilisateur est un professeur
                                 if ($t == 2) {
                                 ?>
-                                <li><a id="Nav_Devoirs" href="#">Mes devoirs</a></li>
-                                <li><a id="Nav_Depots" href="#">Les dépots</a></li>
+                                <li><a id="Nav_Devoirs_Prof" href="#">Mes devoirs</a></li>
+                                <li><a id="Nav_Depots_Prof" href="#">Les dépots</a></li>
                                 <?php
                                     };
                                 ?>
