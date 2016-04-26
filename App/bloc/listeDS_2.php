@@ -16,7 +16,7 @@
 
     $next = new DateTime( $Rep['Date_devoir'] ); 
     $next = $next->format('Ymd'); 
-    var_dump($Rep);
+   // var_dump($Rep);
 
     echo '<table class="table table-condensed Ul_Module_util">';
     echo '<tr>';

@@ -42,13 +42,11 @@
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
-                        <a class="navbar-brand" href="#"><?php echo $util->getNom(); ?></a>
-                        <a class="navbar-brand" href="#"><?php echo $util->getPrenom(); ?></a>
+               
                     <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Options <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $util->getNom(); ?> <?php echo $util->getPrenom(); ?> <span class="caret"></span></a>
             <ul class="dropdown-menu">
-                <li><a href="#">Plus d'options</a></li>
-                <li role="separator" class="divider"></li>
+
                 <li><a href="./../Public/Deconnexion.php">Déconnexion</a></li>
             </ul>
         </li>
