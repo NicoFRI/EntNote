@@ -16,7 +16,7 @@
 
     $next = new DateTime( $Rep['Date_devoir'] ); 
     $next = $next->format('Ymd'); 
-    
+    var_dump($Rep);
 
     echo '<table class="table table-condensed Ul_Module_util">';
     echo '<tr>';
@@ -63,7 +63,9 @@
     }
 
     if($Rep['id_doc_devoir']!=null &&  $now < $next  ) {
+            $Doc = $bdd->getDoc($Rep['id_doc_devoir']);
+
         echo '<tr>';
-        echo '<td class="info" colspan="2"><a id="Voir_'.$Rep['id_doc_devoir'].'"  href="../App/Download.php?Doc='/*chemin.*/.'">Télécharger le document</a></td>';
+        echo '<td class="info" colspan="2"><a id="Voir_'.$Rep['id_doc_devoir'].'"  href="../App/Download.php?Doc='.$Doc['Emplacement_fichier'].'">Télécharger</a></td>';
     echo '</tr>';
 }

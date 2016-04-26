@@ -20,7 +20,7 @@ session_name("ent");
 	
 	while( $Module = $Rep->fetch()) {
 		echo '<tr>';
-	    	echo '<td > <a  id="Module_'.$Module['Id_devoir'].'_0">'.$Module['Type_devoir'].' '.$Module['Nom_devoir'].' </a></td>';
+	    	echo '<td style="width:50%;"> <a  id="Module_'.$Module['Id_devoir'].'_0">'.$Module['Nom_module'].'<br> '.$Module['Type_devoir'].' '.$Module['Nom_devoir'].' </a></td>';
 			echo '<td class="info"> <a id="Module_'.$Module['Id_devoir'].'_1">'.$Module['Coef_module'].'</a></td> ';
 			echo '<td class="info"> <a id="Module_'.$Module['Id_devoir'].'_2">'.$Module['Date_devoir'].'</a></td> ';    	
 	    echo '</tr>';

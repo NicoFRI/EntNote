@@ -24,18 +24,18 @@ session_name("ent");
 		//var_dump($Module);
 		echo '<tr>';
 	    echo '<td "> '.$Module['Etudiant'].' </td>';
-
+		//var_dump($Module);
 	    	//si c'est un DM
 	    	if($_POST['TypeDevoir']=="DM") {
-	    		echo '<td class="info"> <input  type="number" name="'.$Module['ID_notes'].'"  id="'.$Module['ID_notes'].'" value="'.$Module['Valeur'].'">/'.$Module['Note_max'].' min="0" max="'.$Module['Note_max'].'"</td>';
+	    		echo '<td class="info"> <input  type="number" name="'.$Module['ID_notes'].'"  id="'.$Module['ID_notes'].'" value="'.$Module['Valeur'].'"  min="0" max="'.$Module['Note_max'].'">/'.$Module['Note_max'].'</td>';
 
 
-	    		//$Doc = $bdd->getDoc($_POST['IdDevoirs']);
-var_dump($Module);
+	    		$Doc = $bdd->getDoc($Module['id_doc_note']);
+//var_dump($Module);
 
 	    		//si il à été rendu par l'eleve
 	    		if($Module['id_doc_note']!=NULL) {
-       			 echo '<td class="info"><a id="Voir_'.$Rep['id_doc_note'].'"  href="../App/Download.php?Doc='/*chemin.*/.'">Télécharger</a></td>';
+       			 echo '<td class="info"><a id="Voir_'.$Module['id_doc_note'].'"  href="../App/Download.php?Doc='.$Doc['Emplacement_fichier'].'">Télécharger</a></td>';
        			 //sinon
        			} else {
        				echo '<td class="info">pas rendu</td>';
