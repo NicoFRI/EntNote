@@ -48,8 +48,16 @@ $bdd=BDD::connect();
                                     <h3>Ajouter une interro</h3>
                                     <form method="post" action="../App/bloc/upload_3.php" enctype="multipart/form-data">
                                         <div class="btn-group">
+                                            <select>
+                                                <?php $rep = $bdd->getModuleEnseignant($_SESSION["Connexion"]["Identifiant"]);
+                                                while($tableau = $rep->fetch())
+                                                {
+                                                    echo '<option>'.$tableau['Nom_module'].'</option>';
+                                                    // var_dump($tableau);
+                                                }
+                                                ?>
+                                            </select>
 
-                                            </ul>
                                         </div>
                                         <div class="form-group">
                                             <label for="InputNom">Nom</label>
