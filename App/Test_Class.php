@@ -60,3 +60,7 @@ while($tableau = $rep->fetch())
 $rep = $bdd->getDetailsDevoir("SA171",53);
 echo "getDetailsDevoir ";
 var_dump($rep);
+
+$rep = $bdd->getDoc(5);
+echo "getDoc ";
+var_dump($rep);

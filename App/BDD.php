@@ -73,6 +73,52 @@ class myBase extends PDO
         $rep = $this->query('SELECT * FROM `notes_par_intero` where`Identifiant`="'.$indentifiant.'" and `Id_devoir`="'.$IdDevoir.'"');
         return $rep->fetch();
     }
+
+    public function getDoc($ID_doc)
+    {
+        $rep = $this->query('SELECT * FROM `document` where `ID_doc`="'.$ID_doc.'"');
+        return $rep->fetch();
+    }
+
+    public function InsertNewDevoir($devoir)
+    {
+
+
+        $devoir["Nom_module"] = explode(" / ",$devoir["Nom_module_promo"]);
+
+
+        $rep = $this->query('SELECT `ID_module` FROM `modules` WHERE `Nom_module`="'.$devoir["Nom_module"][0].'"');
+        $ID_module=$rep->fetch()[0];
+
+
+        $Doc_id = "NULL";
+
+        if(is_null($devoir["Chemin_doc"])){
+        $rep = $this->query('INSERT INTO `entnotes`.`document` (`ID_doc`, `Titre_doc`, `Description_doc`, `Emplacement_fichier`, `ID_module`, `Id_TypeDoc`) VALUES (NULL, "Sujet de '.$devoir["Nom_devoir"].'", NULL , "'.$devoir["Chemin_doc"].'",'.$ID_module.','.$devoir["ID_typedoc"].')');
+        $Doc_id = $this->lastInsertId();
+
+        }
+
+        $rep = $this->query('INSERT INTO `entnotes`.`devoirs` (`Id_devoir`, `Nom_devoir`, `Type_devoir`, `Date_devoir`, `ID_doc`) VALUES (NULL, "'.$devoir["Nom_devoir"].'", "'.$devoir["Type_devoir"].'", "'.$devoir["Date_devoir"].'" ,'.$Doc_id.')');
+        $ID_devoir = $this->lastInsertId();
+
+
+        $rep = $this->query('SELECT `ID` FROM `modules_utilisateur` WHERE `Nom_module_promo`="'.$devoir["Nom_module_promo"].'" group by `ID`');
+
+
+        $SQL = "INSERT INTO `entnotes`.`notes` (`Valeur`, `Commentaire`, `Coef`, `Note_max`, `ID`, `ID_module`, `Id_devoir`, `ID_doc`) VALUES ";
+
+        while($table = $rep->fetch()){
+
+            $SQL.='(NULL, NULL, '.$devoir["Coef"].', '.$devoir["Notes_MAX"].', '.$table["ID"].', '.$ID_module.', '.$ID_devoir.', NULL ),';
+        }
+
+        $SQL = substr($SQL, 0, -1);
+        //var_dump($SQL);
+
+        $rep = $this->query($SQL);
+
+    }
 }
 
 
