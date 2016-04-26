@@ -18,10 +18,11 @@ session_name("ent");
 	echo '<td  class="info"> <b>'.$_POST['TypeDevoir'].' '.$_POST['NomDevoir'].'</b></td>';
 	echo '<td  class="info"> <b>'.$_POST['DateDevoir'].' </b></td>';
 	echo '</tr>';
-	
-	
+
+$NotesMax=null;
 	while( $Module = $Rep->fetch()) {
-		//var_dump($Module);
+	if (is_null($NotesMax)){  $NotesMax = $Module['Note_max'];}	//var_dump($NotesMax);
+
 		echo '<tr>';
 	    echo '<td "> '.$Module['Etudiant'].' </td>';
 		//var_dump($Module);
@@ -50,6 +51,6 @@ session_name("ent");
 	}
                                   
 	echo '</table>';
-	echo '<input hidden="hidden" name="note_max" valeur="'.$Module['Note_max'].'">';
+	echo '<input hidden="hidden"name="note_max" value="'.$NotesMax.'">';
 	echo '<button type="submit" class="btn btn-success">Modifier</button>';
 	echo '</form>';

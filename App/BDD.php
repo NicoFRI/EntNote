@@ -140,6 +140,19 @@ class myBase extends PDO
         $rep = $this->query('UPDATE `entnotes`.`notes` SET `ID_doc` = '.$Doc_id.' WHERE ( `notes`.`ID` = '.$idnote[1].' AND `notes`.`ID_module` = '.$idnote[0].' AND `notes`.`Id_devoir` = '.$idnote[2].')');
     }
 
+    public function UpdateNotes($ID_notes,$Notes,$NotesMax)
+    {
+        /*$tabINSERT= array ( "Nom_module" => $_POST['NomModule'],
+                    "id_note" => $_POST['IDnotes'],
+                    "idDate_devoir" => $_POST['iddatedev'],
+                    "titre_doc" => $_SESSION["Connexion"]["Identifiant"],
+                    "ID_typedoc" => '3');*/
+
+        $idnote = explode("_",$ID_notes);
+
+
+        $rep = $this->query('UPDATE `entnotes`.`notes` SET `Valeur` = '.$Notes.', `Note_max` = '.$NotesMax.' WHERE ( `notes`.`ID` = '.$idnote[1].' AND `notes`.`ID_module` = '.$idnote[0].' AND `notes`.`Id_devoir` = '.$idnote[2].')');
+    }
 
 }
 
