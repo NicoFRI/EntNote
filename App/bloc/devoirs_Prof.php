@@ -20,15 +20,15 @@ session_name("ent");
 	
 	while( $Module = $Rep->fetch()) {
 		echo '<tr>';
-	    	echo '<td > <a  id="Module_'.$Module['ID_module'].'_0">'.$Module['Type_devoir'].' '.$Module['Nom_devoir'].' </a></td>';
-			echo '<td class="info"> <a id="Module_'.$Module['ID_module'].'_1">'.$Module['Coef_module'].'</a></td> ';
-			echo '<td class="info"> <a id="Module_'.$Module['ID_module'].'_1">'.$Module['Date_devoir'].'</a></td> ';    	
+	    	echo '<td > <a  id="Module_'.$Module['Id_devoir'].'_0">'.$Module['Type_devoir'].' '.$Module['Nom_devoir'].' </a></td>';
+			echo '<td class="info"> <a id="Module_'.$Module['Id_devoir'].'_1">'.$Module['Coef_module'].'</a></td> ';
+			echo '<td class="info"> <a id="Module_'.$Module['Id_devoir'].'_2">'.$Module['Date_devoir'].'</a></td> ';    	
 	    echo '</tr>';
 
 
 	    echo"<script>\n";
 			echo"(function($) {\n";
-			echo " $('#Module_".$Module['ID_module']."_0, #Module_".$Module['ID_module']."_1').click(function(e){\n";
+			echo " $('#Module_".$Module['Id_devoir']."_0, #Module_".$Module['Id_devoir']."_1, #Module_".$Module['Id_devoir']."_2').click(function(e){\n";
 			echo"  e.preventDefault();\n";
 
 			//vide la div_article2

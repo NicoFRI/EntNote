@@ -33,8 +33,8 @@
                                 if ($t == 2) {
                                 ?>
                                 <li><a id="Nav_Devoirs_Prof" href="#">Mes devoirs</a></li>
-                                <li><a id="Nav_Depots_Prof" href="#">Les dépots</a></li>
-                                <?php
+                               <!-- <li><a id="Nav_Depots_Prof" href="#">Les dépots</a></li>
+                                --><?php
                                     };
                                 ?>
                             </ul>

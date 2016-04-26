@@ -9,7 +9,6 @@
     //recupere les devoir associés à l'utilisateur
     $Rep = $bdd->getDetailsDevoir($_SESSION["Connexion"]["Identifiant"], $_POST['IdDevoirs']);
 
-
     //gestion date pour test
     $date = date('Y-m-d'); 
     $now = new DateTime( $date );
@@ -43,7 +42,6 @@
     echo '<tr>';
         echo '<td class="info" colspan="2"><a id="Rendre_'.$Rep['Id_devoir'].'">rendre le DM</a></td>';
     echo '</tr>';
-
 
         echo"<script>\n";
         echo"(function($) {\n";

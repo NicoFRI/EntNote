@@ -27,7 +27,11 @@ session_name("ent");
 
 	    	//si c'est un DM
 	    	if($_POST['TypeDevoir']=="DM") {
-	    		echo '<td class="info"> <input type="number" name="'.$Module['ID_notes'].'" id="'.$Module['ID_notes'].'" value="'.$Module['Valeur'].'">/'.$Module['Note_max'].' </td>';
+	    		echo '<td class="info"> <input  type="number" name="'.$Module['ID_notes'].'"  id="'.$Module['ID_notes'].'" value="'.$Module['Valeur'].'">/'.$Module['Note_max'].' min="0" max="'.$Module['Note_max'].'"</td>';
+
+
+	    		//$Doc = $bdd->getDoc($_POST['IdDevoirs']);
+var_dump($Module);
 
 	    		//si il à été rendu par l'eleve
 	    		if($Module['id_doc_note']!=NULL) {
@@ -38,7 +42,7 @@ session_name("ent");
        			}
        		//si c'est pas un DM
 	    	}else{
-	    	echo '<td class="info"> <input type="number" name="'.$Module['ID_notes'].'" id="'.$Module['ID_notes'].'" value="'.$Module['Valeur'].'">/'.$Module['Note_max'].' </td>';
+	    	echo '<td class="info"> <input type="number" name="'.$Module['ID_notes'].'" id="'.$Module['ID_notes'].'" value="'.$Module['Valeur'].'" min="0" max="'.$Module['Note_max'].'" >/'.$Module['Note_max'].'  </td>';
 	    	echo '<td class="info"> </td>';	
 
 	    	}
