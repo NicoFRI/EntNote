@@ -48,11 +48,11 @@ $bdd=BDD::connect();
                                     <h3>Ajouter une interro</h3>
                                     <form method="post" action="../App/bloc/upload_3.php" enctype="multipart/form-data">
                                         <div class="btn-group">
-                                            <select>
+                                            <select name="Cours" id="Cours">
                                                 <?php $rep = $bdd->getModuleEnseignant($_SESSION["Connexion"]["Identifiant"]);
                                                 while($tableau = $rep->fetch())
                                                 {
-                                                    echo '<option>'.$tableau['Nom_module'].'</option>';
+                                                    echo '<option>'.$tableau['Nom_module_promo'].'</option>';
                                                     // var_dump($tableau);
                                                 }
                                                 ?>
@@ -61,34 +61,29 @@ $bdd=BDD::connect();
                                         </div>
                                         <div class="form-group">
                                             <label for="InputNom">Nom</label>
-                                            <input type="nom" class="form-control" name="InputNom" id="InputNom">
+                                            <input type="nom" class="form-control"  id="InputNom" name="InputNom"/>
                                         </div>
                                         <div class="form-group">
-                                            <label for="InputType">Type</label>
-                                            <input type="nom" class="form-control" id="InputType">
+                                            <label for="InputType">Type (DS-OralQCM)</label>
+                                            <input type="nom" class="form-control" id="InputType" name="InputType"/>
                                         </div>
                                         <div class="form-group">
-                                            <label for="InputNom">Date</label>
-                                            <div class='input-group date' id='datetimepicker1'>
-                                                <input type='text' class="form-control" />
-                                        <span class="input-group-addon">
-                                            <span class="glyphicon glyphicon-calendar"></span>
-                                        </span>
-                                            </div>
+                                            <label for="date">Date (YYYY-MM-DD) </label>
+                                            <input type="text" placeholder="YYYY-MM-DD" id="date" name="date" />
                                         </div>
 
                                         <div class="form-group">
                                             <label for="InputCoef">Coefficient</label>
-                                            <input type="nom" class="form-control" id="InputCoef">
+                                            <input type="nom" class="form-control" id="InputCoef" name="InputCoef" >
                                         </div>
                                         <div class="form-group">
                                             <label for="InputNote">Note maximale</label>
-                                            <input type="note" class="form-control" id="InputNote">
+                                            <input type="note" class="form-control" id="InputNote" name="InputNoteM">
                                         </div>
 
 
                                         <div class="form-group">
-                                            <label for="InputFile">Document</label>
+                                            <label for="InputFile">Document en PDF</label>
                                             <input type="file" name="InputFile" id="InputFile">
                                             <p class="help-block">Ajoutez un document si besoin</p>
                                         </div>
