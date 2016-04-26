@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 26 Avril 2016 à 10:37
+-- Généré le :  Mar 26 Avril 2016 à 11:23
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -405,6 +405,7 @@ CREATE TABLE `modules_prof` (
 ,`ID_module` int(11)
 ,`Nom_module` tinytext
 ,`Coef_module` int(11)
+,`Nom_module_promo` text
 );
 -- --------------------------------------------------------
 
@@ -1086,7 +1087,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `modules_prof`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `modules_prof` AS select `utilistateur`.`Identifiant` AS `Identifiant`,`modules`.`ID_module` AS `ID_module`,`modules`.`Nom_module` AS `Nom_module`,`modules`.`Coef_module` AS `Coef_module` from ((((`devoirs` join `enseigne`) join `notes`) join `modules`) join `utilistateur`) where ((`devoirs`.`Id_devoir` = `notes`.`Id_devoir`) and (`enseigne`.`ID_module` = `modules`.`ID_module`) and (`notes`.`ID_module` = `modules`.`ID_module`) and (`utilistateur`.`ID` = `enseigne`.`ID`)) group by concat(`enseigne`.`ID`,`modules`.`ID_module`);
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `modules_prof` AS select `utilistateur`.`Identifiant` AS `Identifiant`,`modules`.`ID_module` AS `ID_module`,`modules`.`Nom_module` AS `Nom_module`,`modules`.`Coef_module` AS `Coef_module`,concat(`modules`.`Nom_module`,' / ',`promotion`.`Nom_Promo`) AS `Nom_module_promo` from ((((((`devoirs` join `enseigne`) join `notes`) join `modules`) join `utilistateur`) join `suit`) join `promotion`) where ((`devoirs`.`Id_devoir` = `notes`.`Id_devoir`) and (`enseigne`.`ID_module` = `modules`.`ID_module`) and (`notes`.`ID_module` = `modules`.`ID_module`) and (`utilistateur`.`ID` = `enseigne`.`ID`) and (`promotion`.`ID_Promo` = `suit`.`ID_Promo`) and (`suit`.`ID_module` = `enseigne`.`ID_module`)) group by concat(`enseigne`.`ID`,`modules`.`ID_module`,`promotion`.`Nom_Promo`);
 
 -- --------------------------------------------------------
 
