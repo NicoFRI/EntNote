@@ -39,8 +39,6 @@ $bdd=BDD::connect();
                                 <?php
                                 $t = $util->GetType();
                                 if ($t == 1) {
-                                    ?>
-                                    <?php
                                 };
                                 $t = $util->GetType();
                                 if ($t == 2) {
@@ -61,30 +59,30 @@ $bdd=BDD::connect();
                                         </div>
                                         <div class="form-group">
                                             <label for="InputNom">Nom</label>
-                                            <input type="nom" class="form-control"  id="InputNom" name="InputNom"/>
+                                            <input type="nom" class="form-control"  id="InputNom" name="InputNom" required />
                                         </div>
                                         <div class="form-group">
                                             <label for="InputType">Type (DS-OralQCM)</label>
-                                            <input type="nom" class="form-control" id="InputType" name="InputType"/>
+                                            <input type="nom" class="form-control" id="InputType" name="InputType" required/>
                                         </div>
                                         <div class="form-group">
                                             <label for="date">Date (YYYY-MM-DD) </label>
-                                            <input type="text" placeholder="YYYY-MM-DD" id="date" name="date" />
+                                            <input type="text" placeholder="YYYY-MM-DD" id="date" name="date" required />
                                         </div>
 
                                         <div class="form-group">
                                             <label for="InputCoef">Coefficient</label>
-                                            <input type="nom" class="form-control" id="InputCoef" name="InputCoef" >
+                                            <input type="nom" class="form-control" id="InputCoef" name="InputCoef"required />
                                         </div>
                                         <div class="form-group">
                                             <label for="InputNote">Note maximale</label>
-                                            <input type="note" class="form-control" id="InputNote" name="InputNoteM">
+                                            <input type="note" class="form-control" id="InputNote" name="InputNoteM" required />
                                         </div>
 
 
                                         <div class="form-group">
                                             <label for="InputFile">Document en PDF</label>
-                                            <input type="file" name="InputFile" id="InputFile">
+                                            <input type="file" name="InputFile" id="InputFile" required/>
                                             <p class="help-block">Ajoutez un document si besoin</p>
                                         </div>
                                         <button type="submit" class="btn btn-success">Ajouter</button>

@@ -55,7 +55,7 @@
 
         //demande de l'affichage à upload_3 dans la div_article2
         echo '$.post( "../App/bloc/rendre_devoir_3.php",';
-        echo '{ IdDevoirs: "'.$Rep['Id_devoir'].'",    },';
+        echo '{ IDnotes: "'.$Rep['ID_notes'].'" , NomModule: "'.$Rep['Nom_module'].'", iddatedev: "'.$Rep['Date_devoir'].'"  },';
         echo" function(data) {";
         echo" $('.div_article3').append(data);";
         echo "}";
