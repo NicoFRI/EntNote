@@ -24,19 +24,19 @@
                                 if ($t == 1) {
                                     ?>
                                 <li id="li_Nav_Module"><a id="Nav_Module" href="#" >Mes modules</a></li>
-                                <li id="li_Nav_Depots"><a id="Nav_Depots" href="#">Mes dépots</a></li>
+                                <li id="li_Nav_Devoirs"><a id="Nav_Devoirs" href="#">Mes devoirs</a></li>
 
                                 <?php
-                                    };
+                                };
                                 $t = $util->GetType();
-                                  //si utilisateur est un professeur
-                                    if ($t == 2) {
-                                        ?>
+                                //si utilisateur est un professeur
+                                if ($t == 2) {
+                                ?>
                                 <li><a id="Nav_Devoirs" href="#">Mes devoirs</a></li>
                                 <li><a id="Nav_Depots" href="#">Les dépots</a></li>
-<?php
-    };
-?>
+                                <?php
+                                    };
+                                ?>
                             </ul>
                         </li>
                     </ul>
