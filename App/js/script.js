@@ -1,23 +1,28 @@
 (function($) {
-  //lien nav eleves
+  //click sur "Mes modules" dans le menu déroulant de la barre de navigation
   $('#Nav_Module').click(function(e){
-    e.preventDefault();
-    //supprime contenu de .div_article1, pour eviter duplicata si fonction appeler plusieurs fois d'affilé
+
+    //supprime contenu de la zone d'article 1, de la zone d'article 2 et de la zone d'article 3
     $('.div_article1').empty(); 
     $('.div_article2').empty(); 
+    $('.div_article3').empty(); 
 
 
-    //modifie l'affichage dans le nav
+    //Supprime "Mes modules" du menu déroulant
     $('#Nav_Module').html('');
+    //Affiche "Mes modules" sur la barre de navigation
     $('#ici').text("Mes modules");
 
- //si l'element est vide
+    //si "Mes devoirs" n'est plus dans le menu déroulant (Nav_Devoirs vide)
     if($('#Nav_Devoirs').text().length == 0){
+
+      //réaffiche "Mes devoirs"
       $('#Nav_Devoirs').text('Mes devoirs');
     }
 
+    //appelle le fichier Module.php par une methode POST
     $.post( "../App/bloc/Module.php",
-      { Clic_Nav: "Module"},
+      // pour pouvoir afficher le contenu du fichier Module.php dans la zone du premier article
       function(data) {
         $('.div_article1').append(data);
       }
@@ -25,23 +30,30 @@
   });
 
 
+
+  //click sur "Mes devoirs" dans dans le menu déroulant de la barre de navigation
   $('#Nav_Devoirs').click(function(e){
-    e.preventDefault();
-    //supprime contenu de .div_article1, pour eviter duplicata si fonction appeler plusieurs fois d'affilé
+  
+    //supprime contenu de la zone d'article 1, de la zone d'article 2 et de la zone de l'article 3
     $('.div_article1').empty();
     $('.div_article2').empty(); 
-
+    $('.div_article3').empty(); 
 
     //modifie l'affichage dans le nav
     $('#Nav_Devoirs').html('');
     $('#ici').text("Mes devoirs");
 
+    //si "Mes Modules" n'est plus dans le menu déroulant (Nav_Module vide)
     if($('#Nav_Module').text().length == 0) {
+
+      //réaffiche "Mes modules"
       $('#Nav_Module').text('Mes modules');
     }
 
+    //appelle le fichier devoirs.php par une methode POST 
     $.post( "../App/bloc/devoirs.php",
       { Clic_Nav: "Devoirs"},
+        // pour pouvoir afficher le contenu du fichier devoirs.php dans la zone du premier article
         function(data) {
           $('.div_article1').append(data);
         }
@@ -50,23 +62,21 @@
 
 
 
-
-  //lien nav professeur
+    //click sur "Mes devoirs" dans dans le menu déroulant de la barre de navigation d'un enseignant
    $('#Nav_Devoirs_Prof').click(function(e){
-    e.preventDefault();
-    //supprime contenu de .div_article1, pour eviter duplicata si fonction appeler plusieurs fois d'affilé
-    $('.div_article1').empty();
 
-    //modifie l'affichage dans le nav
-    /*$('#Nav_Devoirs_Prof').html('');*/
+    //supprime contenu de la zone d'article 1 et de la zone d'article 2
+    $('.div_article1').empty();
+    $('.div_article2').empty();
+
+    //modifie l'affichage dans la barre de navigation
     $('#ici').text("Mes devoirs");
 
-    /*if($('#Nav_Depots_Prof').text().length == 0) {
-      $('#Nav_Depots_Prof').text('Les dépots');
-    }*/
-
+    //appelle le fichier devoirs_Prof.php par une methode POST 
     $.post( "../App/bloc/devoirs_Prof.php",
       { Clic_Nav: "Devoirs"},
+        // pour pouvoir afficher le contenu du fichier devoirs.php dans la zone du premier article
+
         function(data) {
           $('.div_article1').append(data);
         }
@@ -74,26 +84,5 @@
   });
 
 
-   /*$('#Nav_Depots_Prof').click(function(e){
-    e.preventDefault();
-    //supprime contenu de .div_article1, pour eviter duplicata si fonction appeler plusieurs fois d'affilé
-    $('.div_article1').empty(); 
-
-    //modifie l'affichage dans le nav
-    $('#Nav_Depots_Prof').html('');
-    $('#ici').text("Mes dépots");
-
- //si l'element est vide
-    if($('#Nav_Devoirs_Prof').text().length == 0){
-      $('#Nav_Devoirs_Prof').text('Mes devoirs');
-    }
-
-    $.post( "../App/bloc/depots_Prof.php",
-      { Clic_Nav: "Depots_Prof"},
-      function(data) {
-        $('.div_article1').append(data);
-      }
-    );
-  });*/
 
 })(jQuery);

@@ -62,7 +62,7 @@ $bdd=BDD::connect();
                                             <input type="nom" class="form-control"  id="InputNom" name="InputNom" required />
                                         </div>
                                         <div class="form-group">
-                                            <label for="InputType">Type (DS-OralQCM)</label>
+                                            <label for="InputType">Type (DS-Oral-QCM)</label>
                                             <input type="nom" class="form-control" id="InputType" name="InputType" required/>
                                         </div>
                                         <div class="form-group">

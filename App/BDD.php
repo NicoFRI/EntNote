@@ -32,9 +32,9 @@ class myBase extends PDO
     }
 
 
-    public function getModuleUtilisateur($indentifiant)
+    public function getModuleUtilisateur($identifiant)
     {
-        $rep = $this->query('SELECT * FROM `modules_utilisateur` WHERE Identifiant="'.$indentifiant.'"');
+        $rep = $this->query('SELECT * FROM `modules_utilisateur` WHERE Identifiant="'.$identifiant.'"');
         return $rep;
     }
 
@@ -82,8 +82,6 @@ class myBase extends PDO
 
     public function InsertNewDevoir($devoir)
     {
-
-
         $devoir["Nom_module"] = explode(" / ",$devoir["Nom_module_promo"]);
 
 
@@ -122,11 +120,6 @@ class myBase extends PDO
 
     public function InsertDM($devoir)
     {
-        /*$tabINSERT= array ( "Nom_module" => $_POST['NomModule'],
-                    "id_note" => $_POST['IDnotes'],
-                    "idDate_devoir" => $_POST['iddatedev'],
-                    "titre_doc" => $_SESSION["Connexion"]["Identifiant"],
-                    "ID_typedoc" => '3');*/
 
         $idnote = explode("_",$devoir["id_note"]);
         var_dump($idnote);
@@ -142,11 +135,6 @@ class myBase extends PDO
 
     public function UpdateNotes($ID_notes,$Notes,$NotesMax)
     {
-        /*$tabINSERT= array ( "Nom_module" => $_POST['NomModule'],
-                    "id_note" => $_POST['IDnotes'],
-                    "idDate_devoir" => $_POST['iddatedev'],
-                    "titre_doc" => $_SESSION["Connexion"]["Identifiant"],
-                    "ID_typedoc" => '3');*/
 
         $idnote = explode("_",$ID_notes);
 

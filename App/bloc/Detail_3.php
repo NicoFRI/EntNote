@@ -6,11 +6,11 @@
 	include('/../BDD.php');
 	$bdd = BDD::connect();
 
-	//afiche du titre
-	echo "<h3>Détail de la note pour ".$_POST['NomDevoir']."</h3>";
-
-	//requete sql
+	//récupere les details associée à la note
 	$Detail = $bdd->getDetailsNotes($_POST['IdDevoir']);
+
+	//afiche du titre
+	echo "<h3>Détail de la note pour ".$Detail['Nom_devoir']."</h3>";
 
 	//affichage des details de la note	
     echo '<ul class="list-group">';

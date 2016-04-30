@@ -5,6 +5,7 @@ session_start();
 //connection à la bdd
 include('/../BDD.php');
 include("/../Utilisateur.php");
+
 $bdd = BDD::connect();
 $Utilisateur = new Utilisateur($_SESSION["Connexion"]["Identifiant"]);
 

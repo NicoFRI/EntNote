@@ -30,22 +30,26 @@
 	    echo '</tr>';
 
 
-		//creer le script pour chaque note pour pouvoir afficher les details dans le troisieme bloc
+		//création d'un script 
 	    echo"<script>\n";
 			echo"(function($) {\n";
+  			
+  			//Pour les informations affiché sous forme de liens, lors du click sur ces liens
 			echo " $('#Devoir_".$Devoir['ID_notes']."_0, #Devoir_".$Devoir['ID_notes']."_1 , #Devoir_".$Devoir['ID_notes']."_2').click(function(e){\n";
-			echo"  e.preventDefault();\n";
 
 			//vide la div_article3
 			echo "$('.div_article3').empty(); ";
 
-			//demande de l'affichage Detail_3 dans la div_article3
+			//appelle le fichier Detail_3.php par une methode POST
 			echo '$.post( "../App/bloc/Detail_3.php",';
-	      	echo '{ IdDevoir: "'.$Devoir['ID_notes'].'", NomDevoir: "'.$Devoir['Nom_devoir'].'" },';
+
+			//Avec des variables dans l'entête de la méthode POST
+	      	echo '{ IdDevoir: "'.$Devoir['ID_notes'].'" },';
+
+	      	//Pour pouvoir afficher le contenu du fichier Detail_3.php dans la zone de l'article 3
 	  		echo" function(data) {";
 	   		echo" $('.div_article3').append(data);";
-	     	echo "}";
-	   		echo" );";
+	     	echo "});";
 
 			echo"});\n";
 		echo "})(jQuery); </script> ";

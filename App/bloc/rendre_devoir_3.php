@@ -2,9 +2,6 @@
 	session_name("ent");
 	session_start();
 
-	//connection à la bdd
-	include('/../BDD.php');
-	$bdd = BDD::connect();
 echo'
     <form method="post" action="../App/bloc/upload_3_etu.php" enctype="multipart/form-data">
         <div class="form-group">
